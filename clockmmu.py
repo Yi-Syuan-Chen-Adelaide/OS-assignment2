@@ -107,6 +107,7 @@ class ClockMMU(MMU):
             page_pointed = self.frame_list[self.clock_pointer]
             if self.page_table[page_pointed]['use_bit'] == 0:
                 #Return the page
+                self.clock_pointer = (self.clock_pointer + 1) % self.frames
                 return page_pointed
             #Clear use bit
             self.page_table[page_pointed]['use_bit'] = 0
